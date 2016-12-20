@@ -1,27 +1,7 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/caseymacaulay/Projects/Turing/1module/week4/battleship/lib/game.rb": [
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null
-      ]
     },
-    "timestamp": 1482110442
+    "timestamp": 1482197778
   }
 }

@@ -1,9 +1,5 @@
-require 'simplecov'
-SimpleCov.start
-
 require './lib/welcome'
-require 'minitest/autorun'
-require 'minitest/pride'
+require_relative 'test_helper'
 
 class WelcomeTest < Minitest::Test
 
