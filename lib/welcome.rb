@@ -4,6 +4,7 @@ require_relative 'game'
 class Welcome
 
   def start_message
+    print "\e[H\e[2J"
     puts "WELCOME TO BATTLESHIP!\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
     input = gets.chomp
     player_chooses(input)
