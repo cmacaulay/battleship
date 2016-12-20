@@ -1,61 +1,46 @@
 require 'pry'
+require './lib/cell'
 
 class Board
-  attr_reader :current_board
+  attr_accessor :grid
+
+  NUM_SHIPS         = 2
+  BOARD_SIZE        = 4
+  ROW_LETTER        = ["A", "B", "C", "D"]
+  COLUMN_NUM        = [" ", "1", "2", "3", "4"]
 
   def initialize
-    @current_board = Array.new
+    @grid = Array.new(BOARD_SIZE).map! do
+      Array.new(BOARD_SIZE).map! do
+        Cell.new
+      end
+    end
   end
 
 
   def print_board
-    print_row_label
-    puts
-    board_layout.each_with_index do |row, i|
-      print column_label[i]
-      print "\t"
-      print row.join("\t")
-      puts
+    print_column_numbers
+    @grid.each_with_index do |row, index|
+      print_row_letters(index)
+        row.each do |cell|
+          print_cell_contents(cell)
+        end
+        print "\n"
     end
   end
 
-  def board_layout
-     Array.new(4, " ").map do |row|
-      Array.new(4, " ")
-    end
+  def print_column_numbers
+    print COLUMN_NUM.join("\t")
+    print "\n"
   end
 
-  def row_label
-    ["1", "2", "3", "4"].join("\t")
-  end
-
-  def print_row_label
+  def print_row_letters(index)
+    print ROW_LETTER[index]
     print "\t"
-    print row_label
   end
 
-  def column_label
-     ["A", "B", "C", "D"]
+  def print_cell_contents(cell)
+    print cell.update_board_cell
+    print "\t"
   end
-
-
-  # def print_board A1 hit
- #   board_layout  = Array.new(3, ".").map{|row| Array.new(4, ".")}
- #   row_label     = ["1", "2", "3", "4"]
- #   column_label  = ["B", "C", "D"]
- #   t             = "\t"
- #
- #   print t
- #   print row_label.join(t)
- #   print "\n"
- #   print ["A", "hit", ".", ".", "."].join(t)
- #   puts
- #   board_layout.each_with_index do |row, i|
- #     print column_label[i]
- #
- #     print "\t"
- #     print row.join("\t")
- #     puts
- #   end
-
 end
