@@ -1,7 +1,9 @@
 require 'pry'
-require_relative 'game'
+require './lib/game'
+require './lib/messages'
 
 class Welcome
+  include Messages
 
   def start_message
     print "\e[H\e[2J"
@@ -17,6 +19,7 @@ class Welcome
         play_game
       elsif input == ("i" || "instructions")
         show_instructions
+        gets.chomp 
         start_message
       elsif input == ("q" || "quit")
         quit
@@ -30,7 +33,7 @@ class Welcome
   end
 
   def show_instructions
-    puts "This is how you play the game."
+    p "This is how you play the game."
   end
 
   def quit

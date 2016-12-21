@@ -55,4 +55,9 @@
      puts
    end
 
-# 
+# Board attempt 2
+
+
+  Array.new(BOARD_SIZE).map! do
+    Array.new(BOARD_SIZE).map! do
+      Cell.new

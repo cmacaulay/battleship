@@ -3,9 +3,11 @@ class Cell
 
   GRID_OPTIONS = {  :open_sea   => ".",
                     :hit        => "H",
-                    :miss       => "M"
-                    :submarine  => "S"
-                    :destroyer  => "D" }
+                    :miss       => "M" }
+                    :occupied   => "X"
+                    # :submarine  => "S"
+                    # :destroyer  => "D" }
+
 
   def initialize(status = :open_sea, ship = nil)
     @status = status
@@ -23,6 +25,12 @@ class Cell
     else
       GRID_OPTIONS[@status]
     end
+  end
+
+  def ships_ahoy
+    # when ship = ship, status = :occupied
+    if @ship == ship
+      status = :occupied 
   end
 
   def hit
