@@ -1,5 +1,5 @@
+require './test/test_helper'
 require './lib/board'
-require_relative 'test_helper'
 
 class BoardTest < Minitest::Test
 
@@ -16,8 +16,8 @@ class BoardTest < Minitest::Test
 
     assert_equal Array, grid.class
     assert_equal Array, board.print_board.class
+    assert board.print_row_letters(4).nil?
 
-    # binding.pry
   end
 
 

@@ -1,5 +1,5 @@
+require './test/test_helper'
 require './lib/welcome'
-require_relative 'test_helper'
 
 class WelcomeTest < Minitest::Test
 

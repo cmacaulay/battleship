@@ -3,6 +3,7 @@ require './lib/cell'
 
 class Board
   attr_accessor :grid
+  attr_reader   :columns, :rows
 
   NUM_SHIPS         = 2
   BOARD_SIZE        = 4
@@ -10,13 +11,21 @@ class Board
   COLUMN_NUM        = [" ", "1", "2", "3", "4"]
 
   def initialize
-    @grid = Array.new(BOARD_SIZE).map! do
-      Array.new(BOARD_SIZE).map! do
-        Cell.new
-      end
+    @grid = columns.map! do
+      rows
     end
+
   end
 
+  def columns
+    Array.new(BOARD_SIZE)
+  end
+
+  def rows
+    Array.new(BOARD_SIZE).map! do
+      Cell.new
+    end
+  end
 
   def print_board
     print_column_numbers
@@ -24,6 +33,7 @@ class Board
       print_row_letters(index)
         row.each do |cell|
           print_cell_contents(cell)
+          # binding.pry
         end
         print "\n"
     end
