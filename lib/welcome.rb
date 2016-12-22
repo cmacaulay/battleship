@@ -1,16 +1,17 @@
 require 'pry'
 require './lib/game'
-require './lib/messages'
 
 class Welcome
-  include Messages
 
-  def start_message
-    print "\e[H\e[2J"
-    puts "WELCOME TO BATTLESHIP!\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
+  def print_start_message
+    print start_message
     input = gets.chomp
     player_chooses(input)
-    # binding.pry
+  end
+
+  def start_message
+     "\e[H\e[2J
+     \nWELCOME TO BATTLESHIP!\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?\n"
   end
 
   def player_chooses(input)
@@ -19,12 +20,14 @@ class Welcome
         play_game
       elsif input == ("i" || "instructions")
         show_instructions
-        gets.chomp 
+        gets.chomp
         start_message
       elsif input == ("q" || "quit")
         quit
       else
-        puts "Please try again by slecting\n(p)lay, (i)nstructions, or (q)uit."
+        puts "What you entered was not valid. Please hit enter to return to menu."
+        gets.chomp
+        start_message
     end
   end
 
@@ -33,7 +36,15 @@ class Welcome
   end
 
   def show_instructions
-    p "This is how you play the game."
+    print "\n\nThis is the game of Battleship.\n"\
+      "You and your opponent place ships on a grid, "\
+      "and take turns attacking each other."\
+      "\n\nThe grids are referenced by letter "\
+      "for row, and number for column"\
+      "\nA1, B3, etc."\
+      "\n\nThe first person to destroy all their "\
+      "oppnents ships wins."\
+      "(p)lay or (q)uit?"
   end
 
   def quit

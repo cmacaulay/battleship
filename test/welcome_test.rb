@@ -12,8 +12,12 @@ class WelcomeTest < Minitest::Test
 
   def test_welcome_message_plays
     w = Welcome.new
-# binding.pry
-    refute_nil w.start_message
+    expected =  "\e[H\e[2J
+     \nWELCOME TO BATTLESHIP!\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?\n"
+
+
+    assert_equal expected, w.start_message
+    w.print_start_message
   end
 
   def test_player_input_responds_to_methods
