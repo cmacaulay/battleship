@@ -15,8 +15,6 @@ class Computer
     @helper_increment = (1 - @placement_helper).abs
   end
 
-  # Order of events: first cell placement, change cell status, next_cell_placements, change cell status
-
   def computer_places_ships
     SHIPS.each do |length|
       first_cell_placement(length)
@@ -40,6 +38,7 @@ class Computer
       if get_cell.status == :occupied
         first_cell_placement(length)
       end
+      get_cell.status 
   end
 
   def change_cell_status

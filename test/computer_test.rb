@@ -41,24 +41,20 @@ class ComputerTest < Minitest::Test
   def test_computer_can_place_ships
     cp    = Computer.new
     board = cp.computer_board
-# binding.pry
+
     cp.first_cell_placement(3)
     cp.change_cell_status
+    assert_equal :open_sea, cp.check_if_occupied(2)
 
-    x     = cp.cell_index[0]
-    y     = cp.cell_index[1]
     cell  = cp.get_cell
 
     assert_instance_of Cell, cell
-    assert_equal :occupied, cell.status
-    assert_equal :ship, cell.ship
     cp.next_cell_placements(3)
 
     cp.first_cell_placement(2)
     cp.change_cell_status
     cp.next_cell_placements(2)
-    # binding.pry
   end
 
-
+  
 end
