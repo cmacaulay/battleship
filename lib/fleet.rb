@@ -3,9 +3,9 @@ class Fleet
               :hit_count
 
   def initialize(length)
-    @ship_length     = length
-    @hit_count  = 0
-    @sunk       = false
+    @ship_length  = length
+    @hit_count    = 0
+    @sunk         = false
   end
 
   def sunk?
