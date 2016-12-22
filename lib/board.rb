@@ -2,7 +2,7 @@ require 'pry'
 require './lib/cell'
 
 class Board
-  attr_accessor :grid
+  attr_accessor :grid, :cell
   attr_reader   :columns, :rows
 
   NUM_SHIPS         = 2
@@ -24,7 +24,7 @@ class Board
   def rows
     Array.new(BOARD_SIZE).map! do
       Cell.new
-    end
+     end
   end
 
   def print_board
